@@ -10,7 +10,7 @@
    <script type="text/javascript" src="tinderforfriends.js"></script>
   </head>
 
-  <body>
+  <body onload="myFunction()">
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
       <div class="container">
         <a class="navbar-brand" href="#">BUDDIES</a>
@@ -34,33 +34,45 @@
         </div>
       </div>
     </nav>
-
     <center>
       <font color= "white">
-        <br><br><br><br><br><br><br><br><br><br><br>
-      <h1> What is the preferred gender of your new friend? </h1>
-        <span id="navigation">
-        <a href= "girlChoicePage.html" ><button onclick="girlFunction()">Female</button> </a>
-        <a href= "boyChoicePage.html" ><button onclick="boyFunction()">Male</button> </a>
-        <a href= "otherChoicePage.html" ><button onclick="otherFunction()">No Preference</button> </a><br><br>
-        <a href= "tinderforfriendstwo.html" ><button >Go Back</button> </a>
-        <p id="genders"></p>
-
-      </span>
+        <br><br><br><br><br><br><br><br><br>
+      <h1> Great! Here is a friend in your area that we found for you! </h1>
+      <button onclick="myFunction()">Click for a new friend!</button>
+      <p id="demo"> </p>
       <script>
-      function girlFunction() {
-        var genderEntered = "female";
-        document.getElementById("genders").innerHTML = "Great. We will find you a female friend!";
+      function shuffle(array) {
+        var currentIndex = array.length, temporaryValue, randomIndex;
+
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+        }
+
+        return array;
       }
-      function boyFunction() {
-        var genderEntered = "male";
-        document.getElementById("genders").innerHTML = "Great. We will find you a male friend!";
-      }
-      function otherFunction() {
-        var genderEntered = "other";
-        document.getElementById("genders").innerHTML = "Great. We will find you a friend!";
+
+      function myFunction() {
+        var friends = ["Sam", "Chandler", "Peyton", "Casey", "Marley", "Finley", "Parker", "Jordan", "Riley", "Avery"];
+        var names = shuffle(friends)
+        var email = ["pizza123@gmail.com", "docu34@aol.com", "dogsrgr8@yahoo.com", "ilovegiraffes@gmail.com", "gbacon@mac.com", "r3djack3t@yahoo.com", "friedchckn73@gmail.com", "argarnio@aol.com", "greenball00n@yahoo.com"];
+        var emails = shuffle(email)
+        document.getElementById("myText").innerHTML = names[0];
+        document.getElementById("myTexts").innerHTML = emails[0];
       }
       </script>
+        <h2>Your next friend is:  <span id="myText"></span></h2>
+        <h2>Their email address is: <span id="myTexts"></span></h2>
+        <a href= "tinderforfriendsthree.html" ><button >Go Back</button> </a>
+        <a href= "index.html" ><button>Go back to main page</button> </a>
       </font>
     </center>
     </body>
